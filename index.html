@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#302d2b">
-  <meta name="description" content="Información oficial de ACHETSU para preparar el proceso de elección de su Directiva: padrón, membresías y convocatoria.">
-  <title>Elecciones ACHETSU | Información del proceso</title>
+  <meta name="description" content="Convocatoria oficial a elecciones de Directorio ACHETSU 2026-2029: afiche, calendario electoral, requisitos de candidatura y documentos descargables.">
+  <title>Elecciones ACHETSU | Convocatoria oficial 2026-2029</title>
   <style>
     :root {
       color-scheme: light;
@@ -340,6 +340,119 @@
     .footer-inner p { margin: 0; color: #f0e9dc; font-size: 0.78rem; }
     .footer-inner a { color: #f1cf6e; font-size: 0.82rem; font-weight: 750; }
 
+    /* Convocatoria oficial */
+    .convocatoria-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+    .afiche-frame {
+      position: relative;
+      padding: 0.6rem;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+    .afiche-frame img { display: block; width: 100%; height: auto; }
+    .afiche-caption { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.78rem; text-align: center; }
+
+    .key-dates {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .key-date {
+      padding: 1.1rem 1.2rem;
+      border-top: 4px solid var(--rust);
+      background: var(--white);
+    }
+    .key-date:nth-child(2) { border-top-color: var(--teal); }
+    .key-date p:first-child {
+      margin: 0 0 0.3rem;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .key-date .date-value {
+      margin: 0;
+      font: 400 clamp(1.5rem, 3vw, 2rem)/1 Georgia, "Times New Roman", serif;
+      color: var(--ink);
+    }
+    .key-date p:last-child { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.82rem; }
+
+    .warning-box {
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+      border: 1px solid #c9876b;
+      background: #f4e4dc;
+      color: #843c24;
+      font-size: 0.86rem;
+      font-weight: 650;
+    }
+
+    .doc-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    .calendar-table {
+      width: 100%;
+      margin: 1.5rem 0;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+    .calendar-table th {
+      padding: 0.75rem 1rem;
+      background: var(--teal-dark);
+      color: var(--white);
+      font-size: 0.74rem;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    .calendar-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .calendar-table td:last-child { white-space: nowrap; color: var(--teal-dark); font-weight: 750; }
+    .calendar-table tr.is-highlight td { background: var(--paper-deep); font-weight: 800; }
+    .calendar-table tr.is-vote td { background: #f1dfb8; font-weight: 850; }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .doc-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1.3rem;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+    .doc-card h3 { margin: 0; font-size: 1.15rem; }
+    .doc-card p { margin: 0; color: var(--muted); font-size: 0.84rem; }
+    .doc-card .button { margin-top: auto; align-self: flex-start; }
+
+    .requirements-list { margin: 1rem 0; padding-left: 1.2rem; color: var(--muted); font-size: 0.9rem; }
+    .requirements-list li { margin-bottom: 0.4rem; }
+    .requirements-list strong { color: var(--ink); }
+
+    @media (max-width: 760px) {
+      .convocatoria-grid { grid-template-columns: minmax(0, 1fr); }
+      .key-dates { grid-template-columns: 1fr; }
+      .calendar-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
+
     @media (max-width: 760px) {
       .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
       .hero-copy { min-width: 0; }
@@ -382,11 +495,11 @@
 </head>
 <body>
   <!--
-  THESIS: Una elección legítima comienza con un registro revisado; esta página reemplaza la portada institucional genérica por el estado y las acciones electorales.
+  THESIS: La convocatoria ya es oficial; esta página es la fuente autocontenida y descargable de todo lo necesario para votar o postular.
   OWN-WORLD: Marfil, carbón, terracota, oro y verde petróleo; tipografía editorial legible y líneas de acta que organizan la información.
-  STORY: La persona entiende que la convocatoria aún no tiene fecha oficial, revisa su situación y prepara su participación.
-  FIRST VIEWPORT: Mensaje principal y consulta del padrón a la izquierda; tablero de estado de convocatoria a la derecha, con acciones visibles.
-  FORM: Portal electoral independiente, organizado como secuencia de etapas y tablero oficial; identidad ACHETSU existente, sin calendario inventado.
+  STORY: La persona confirma fechas y requisitos oficiales, descarga el afiche/documento/plantillas que necesita y revisa su situación en el padrón.
+  FIRST VIEWPORT: Mensaje principal y descarga de la convocatoria a la izquierda; tablero con la fecha de votación a la derecha.
+  FORM: Portal electoral independiente con afiche, calendario electoral completo y documentos descargables por sección; identidad ACHETSU existente.
   -->
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
@@ -396,8 +509,10 @@
         <span class="brand-name">ACHETSU<span>PROCESO ELECTORAL</span></span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
-        <a href="#etapas">Etapas</a>
-        <a href="#incorporacion">Incorporación</a>
+        <a href="#convocatoria">Convocatoria</a>
+        <a href="#candidaturas">Candidaturas</a>
+        <a href="#calendario">Calendario</a>
+        <a href="#padron">Padrón</a>
         <a class="nav-main" href="https://achetsu.cl/">Sitio institucional ↗</a>
       </nav>
     </div>
@@ -407,20 +522,137 @@
     <section class="hero" id="inicio" aria-labelledby="page-title">
       <div class="hero-grid wrap">
         <div class="hero-copy">
-          <h1 id="page-title">Una elección informada comienza con un <em>registro al día.</em></h1>
-          <p>Consulta las acciones para preparar la elección de la Directiva de ACHETSU. Antes de convocar a la Asamblea General Ordinaria, se requiere avanzar en la actualización del registro y la revisión de membresías.</p>
+          <h1 id="page-title">Convocatoria oficial a elecciones de <em>Directorio 2026-2029.</em></h1>
+          <p>ACHETSU convoca a sus socias y socios a participar en el proceso electoral destinado a renovar democráticamente su Directorio. Esta página reúne, de forma autocontenida, todos los documentos oficiales y descargables por sección, para que puedas revisarlos sin conexión y sin depender de enlaces externos.</p>
           <div class="hero-actions">
-            <a class="button" href="https://achetsu.cl/#padron">Consultar padrón y actualizar datos ↗</a>
-            <a class="button button-secondary" href="#etapas">Ver etapas del proceso ↓</a>
+            <a class="button" href="assets/documentos/convocatoria-elecciones-achetsu-2026.pdf" target="_blank" rel="noopener">Descargar convocatoria completa (PDF) ↓</a>
+            <a class="button button-secondary" href="#padron">Consultar el padrón ↓</a>
           </div>
         </div>
         <aside class="status-board" aria-labelledby="status-title">
-          <p class="status-label">Información oficial</p>
-          <h2 id="status-title">Convocatoria y fechas por informar</h2>
-          <p>La Asamblea y la elección serán anunciadas oportunamente, una vez avanzado el proceso de actualización y regularización de membresías.</p>
-          <p class="status-rule">Fechas, padrón electoral y requisitos específicos se comunicarán junto con la convocatoria oficial.</p>
+          <p class="status-label">Convocatoria oficial</p>
+          <h2 id="status-title">Votación: 24 y 25 de noviembre de 2026</h2>
+          <p>Universidad Alberto Hurtado, Santiago de Chile. El Directorio se renueva para el período 2026-2029, conforme a los Estatutos de ACHETSU.</p>
+          <p class="status-rule">Santiago, octubre de 2026 · Directorio ACHETSU 2026.</p>
         </aside>
       </div>
+    </section>
+
+    <section class="section wrap" id="convocatoria" aria-labelledby="convocatoria-title">
+      <div class="section-heading">
+        <h2 id="convocatoria-title">Declaración institucional</h2>
+        <p>ACHETSU convoca a sus socias y socios a participar en el proceso electoral destinado a renovar democráticamente su Directorio para el período 2026-2029.</p>
+      </div>
+      <div class="convocatoria-grid">
+        <div>
+          <div class="afiche-frame">
+            <img src="assets/afiche-convocatoria-2026.jpg" alt="Afiche oficial: Convocatoria a Elecciones de Directorio ACHETSU, período 2026-2029, votación 24 y 25 de noviembre de 2026 en la Universidad Alberto Hurtado, Santiago de Chile.">
+          </div>
+          <p class="afiche-caption">Afiche oficial de convocatoria · descargable en el documento completo.</p>
+        </div>
+        <div>
+          <p>Este proceso se desarrolla en un momento significativo de la trayectoria de la Asociación: fortalecimiento institucional, consolidación de su personalidad jurídica, incremento de socios institucionales y naturales, y ampliación de su presencia en espacios de colaboración académica nacionales e internacionales.</p>
+          <p>En este contexto, el Directorio invita a todas y todos los socios habilitados a participar activamente en el presente proceso electoral, contribuyendo al fortalecimiento de la democracia interna de la Asociación y a la construcción de una agenda común para el próximo período.</p>
+          <div class="doc-download">
+            <a class="button button-outline" href="assets/documentos/convocatoria-elecciones-achetsu-2026.pdf" target="_blank" rel="noopener">Abrir documento oficial de convocatoria (PDF) ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="directorio-title">
+      <div class="section-heading">
+        <h2 id="directorio-title">Estructura y naturaleza del Directorio</h2>
+        <p>El Directorio estará compuesto por cinco integrantes. Todos los cargos son honoríficos: no generan remuneración, contrato de trabajo ni relación laboral o previsional con la Asociación.</p>
+      </div>
+      <ul class="requirements-list">
+        <li><strong>Presidente/a:</strong> ejerce la representación legal de la Asociación.</li>
+        <li><strong>Secretario/a:</strong> recaba actas y antecedentes, comunica a socios/as, y puede ser nombrado Ejecutivo para acciones delimitadas en representación de la presidencia.</li>
+        <li><strong>Tesorero/a:</strong> encargado/a de la administración financiera y patrimonial, en conjunto con la Presidencia.</li>
+        <li><strong>Directores/as (2):</strong> apoyan la gestión del directorio, acompañando funciones y coordinando labores junto con los y las socios/as.</li>
+      </ul>
+    </section>
+
+    <section class="section wrap" id="candidaturas" aria-labelledby="candidaturas-title">
+      <div class="section-heading">
+        <h2 id="candidaturas-title">Presentación de candidaturas</h2>
+        <p>Las candidaturas se presentan mediante listas cerradas de cinco integrantes, con representación de al menos tres instituciones de educación superior socias de ACHETSU.</p>
+      </div>
+      <ul class="requirements-list">
+        <li>Nombre completo de cada candidato o candidata.</li>
+        <li>Institución de pertenencia.</li>
+        <li>Calidad de socio natural o representante institucional.</li>
+        <li>Cargo propuesto dentro de la lista.</li>
+        <li>Declaración escrita de aceptación de candidatura.</li>
+        <li>El socio/a candidato/a debe presentar una carta de respaldo de representante institucional si representa a una casa de estudios.</li>
+      </ul>
+      <p><strong>Personas elegibles:</strong> socios y socias naturales activos, y representantes acreditados de instituciones socias activas, en pleno ejercicio de sus derechos sociales y sin suspensión vigente.</p>
+      <div class="doc-grid">
+        <article class="doc-card">
+          <h3>Declaración de aceptación de candidatura</h3>
+          <p>Modelo oficial de declaración escrita de aceptación, requerida para cada integrante de la lista.</p>
+          <a class="button button-light" href="assets/documentos/declaracion-aceptacion-candidatura.docx">Descargar plantilla (.docx) ↓</a>
+        </article>
+        <article class="doc-card">
+          <h3>Formulario de presentación de lista</h3>
+          <p>Formulario oficial para presentar la lista candidata completa ante la Comisión Electoral.</p>
+          <a class="button button-light" href="assets/documentos/formulario-presentacion-lista.docx">Descargar plantilla (.docx) ↓</a>
+        </article>
+        <article class="doc-card">
+          <h3>Carta de respaldo institucional</h3>
+          <p>Modelo de carta de respaldo de representante institucional para candidatos/as que representen a una casa de estudios.</p>
+          <a class="button button-light" href="assets/documentos/carta-respaldo-institucional.docx">Descargar plantilla (.docx) ↓</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="habilitacion-title">
+      <div class="section-heading">
+        <h2 id="habilitacion-title">Habilitación para votar y postular</h2>
+        <p>Se considerarán habilitados para sufragar y para integrar candidaturas únicamente quienes mantengan la calidad de socios activos, conforme a los Estatutos, previo cumplimiento de los requisitos de regularización.</p>
+      </div>
+      <div class="key-dates">
+        <div class="key-date">
+          <p>Candidaturas</p>
+          <p class="date-value">05 · 11 · 2026</p>
+          <p>Plazo de regularización para postular a cargos directivos.</p>
+        </div>
+        <div class="key-date">
+          <p>Electores</p>
+          <p class="date-value">23 · 11 · 2026</p>
+          <p>Plazo de regularización para ejercer el derecho a voto.</p>
+        </div>
+      </div>
+      <div class="warning-box" role="note">
+        La regularización de obligaciones pecuniarias efectuada con posterioridad al 05 de noviembre de 2026 no modificará el padrón electoral definitivo para presentarse como candidatos/as, pero no inhabilitará el ejercicio de derechos a voto para el presente proceso si se realiza hasta el 23 de noviembre de 2026, tal como indican los Estatutos de esta asociación.
+      </div>
+    </section>
+
+    <section class="section wrap" id="calendario" aria-labelledby="calendario-title">
+      <div class="section-heading">
+        <h2 id="calendario-title">Detalle del calendario electoral</h2>
+        <p>Todas las etapas del proceso, desde la convocatoria hasta la proclamación de resultados.</p>
+      </div>
+      <table class="calendar-table">
+        <thead>
+          <tr><th>Etapa</th><th>Fecha</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Convocatoria a Asamblea Ordinaria mediante publicación en diario de circulación nacional</td><td>30 de octubre de 2026</td></tr>
+          <tr><td>Publicación padrón electoral (pendiente de regulación)</td><td>30 de octubre de 2026</td></tr>
+          <tr><td>Recepción de observaciones al padrón y actualización de socios/as activas elegibles</td><td>30 de octubre al 5 de noviembre de 2026</td></tr>
+          <tr class="is-highlight"><td>Fecha de corte para habilitación como candidatos/as</td><td>05 de noviembre de 2026</td></tr>
+          <tr><td>Publicación del padrón electoral definitivo para socios/as elegibles</td><td>06 de noviembre de 2026</td></tr>
+          <tr><td>Inscripción de listas</td><td>6 al 11 de noviembre de 2026</td></tr>
+          <tr><td>Revisión y validación de listas (criterios previstos en estatutos)</td><td>12 al 13 de noviembre de 2026</td></tr>
+          <tr><td>Publicación de listas aceptadas e inicio de período de candidaturas</td><td>14 de noviembre de 2026</td></tr>
+          <tr><td>Presentación pública de candidaturas y programas. Cada lista candidata debe comunicar su programa de trabajo de manera autónoma</td><td>15 a 23 de noviembre de 2026</td></tr>
+          <tr><td>Cierre y publicación de padrón electoral definitivo (voto)</td><td>23 de noviembre de 2026</td></tr>
+          <tr class="is-vote"><td>Proceso de votación</td><td>24 y 25 de noviembre de 2026</td></tr>
+          <tr><td>Escrutinio y proclamación de resultados</td><td>25 de noviembre de 2026</td></tr>
+        </tbody>
+      </table>
+      <p>La Comisión Electoral elabora y publica el padrón electoral; verifica la condición de socio activo y el cumplimiento de obligaciones pecuniarias; revisa y valida las candidaturas presentadas; supervisa el proceso electoral; realiza el escrutinio y proclama oficialmente los resultados. Toda situación no prevista en la convocatoria será resuelta por la Comisión Electoral conforme a los Estatutos de ACHETSU.</p>
     </section>
 
     <section class="section wrap" id="etapas" aria-labelledby="stages-title">
@@ -451,12 +683,13 @@
             <a class="step-link" href="https://achetsu.cl/#padron">Abrir consulta del padrón y solicitar rectificación ↗</a>
           </div>
         </article>
-        <article class="process-step" id="convocatoria">
+        <article class="process-step" id="presentar-candidatura">
           <span class="step-index" aria-hidden="true">03</span>
-          <h3>Esperar la convocatoria oficial</h3>
+          <h3>Presentar tu lista candidata</h3>
           <div class="step-copy">
-            <p>La convocatoria a Asamblea General Ordinaria comunicará las fechas, el padrón electoral y los requisitos específicos. No hay fechas oficiales publicadas en esta página por ahora.</p>
-            <p>Cuando exista una comunicación oficial, aquí se incorporarán sus documentos y las instrucciones correspondientes.</p>
+            <p>Si cumples los requisitos de habilitación, prepara tu lista cerrada de cinco integrantes con los documentos oficiales del proceso.</p>
+            <p>El plazo de inscripción de listas es del 6 al 11 de noviembre de 2026.</p>
+            <a class="step-link" href="#candidaturas">Ver requisitos y descargar formularios ↑</a>
           </div>
         </article>
       </div>
@@ -494,10 +727,10 @@
     <section class="section wrap" aria-labelledby="official-title">
       <div class="official-call">
         <div>
-          <h2 id="official-title">La información de la elección se publicará aquí.</h2>
-          <p>La convocatoria oficial será la referencia para conocer fechas, padrón electoral y requisitos específicos. Mientras tanto, puedes revisar y actualizar tus datos en la consulta del padrón.</p>
+          <h2 id="official-title">Toda la convocatoria, autocontenida y descargable.</h2>
+          <p>El documento oficial de convocatoria, el afiche y las tres plantillas de candidatura están disponibles para revisar y descargar sin conexión desde esta misma página.</p>
         </div>
-        <a class="button" href="https://achetsu.cl/#padron">Consultar el padrón ↗</a>
+        <a class="button" href="assets/documentos/convocatoria-elecciones-achetsu-2026.pdf" target="_blank" rel="noopener">Descargar convocatoria (PDF) ↗</a>
       </div>
     </section>
   </main>
