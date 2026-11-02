@@ -25,6 +25,11 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Sync padrón desde achetsuweb
+        run: |
+          curl -fsSL -o assets/padron-socios.json \
+            https://raw.githubusercontent.com/estebancofre-coy/achetsuweb/main/assets/padron-socios.json \
+            || echo "No se pudo actualizar el padrón; se usa la copia del repositorio."
       - name: Prepare public site
         run: |
           mkdir -p _site

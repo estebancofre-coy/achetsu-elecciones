@@ -491,6 +491,140 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: 0.01ms !important; }
     }
+
+    /* Consulta del padrón, autocontenida */
+    .directory-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+
+    .member-viewer {
+      min-width: 0;
+      padding-top: 1.1rem;
+      border-top: 2px solid var(--rust);
+    }
+
+    .member-viewer:nth-child(2) { border-color: var(--teal); }
+    .member-viewer h3 { margin: 0; font: 400 1.7rem/1.2 Georgia, "Times New Roman", serif; }
+    .member-viewer > p { max-width: 50ch; margin: 0.65rem 0 1.2rem; color: var(--muted); font-size: 0.88rem; }
+
+    .member-search-label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #544d47;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .member-search {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #c9c0b2;
+      border-radius: 0;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .member-suggestions {
+      position: relative;
+      z-index: 2;
+      max-height: 18rem;
+      overflow-y: auto;
+      border: 1px solid var(--line);
+      border-top: 0;
+      background: var(--white);
+    }
+
+    .member-suggestions[hidden] { display: none; }
+
+    .suggestion-option {
+      display: block;
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .suggestion-option:hover,
+    .suggestion-option:focus-visible { background: var(--paper-deep); }
+    .suggestion-option strong { display: block; font-size: 0.88rem; }
+    .suggestion-option span { color: var(--muted); font-size: 0.78rem; }
+
+    .member-search-status {
+      min-height: 1.6em;
+      margin: 0.55rem 0 0;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .member-search-status[data-state="error"] { color: var(--rust); font-weight: 700; }
+
+    .member-result {
+      margin-top: 0.8rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .member-result[hidden] { display: none; }
+    .member-result h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+    .member-result-university { margin: 0 0 0.8rem; color: var(--muted); font-size: 0.84rem; }
+
+    .member-result dl {
+      display: grid;
+      margin: 0;
+      border-top: 1px solid var(--line);
+      grid-template-columns: 6rem minmax(0, 1fr);
+      gap: 0;
+    }
+
+    .member-result dt,
+    .member-result dd { margin: 0; padding: 0.5rem 0; border-bottom: 1px solid var(--line); font-size: 0.82rem; overflow-wrap: anywhere; }
+    .member-result dt { color: var(--muted); }
+    .member-result dd { font-weight: 700; }
+
+    .member-status {
+      display: block;
+      margin-top: 0.9rem;
+      padding: 0.65rem 0.75rem;
+      background: #f7e9dc;
+      color: #783f28;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .member-status::before { margin-right: 0.4rem; content: "!"; }
+    .member-status.is-eligible { background: #e1eee8; color: #174e4b; }
+    .member-status.is-eligible::before { content: "✓"; }
+
+    .member-result-note,
+    .directory-notice { margin: 0.75rem 0 0; color: var(--muted); font-size: 0.77rem; }
+
+    .directory-notice {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--line);
+      background: var(--paper-deep);
+    }
+
+    .document-link {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 760px) {
+      .directory-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -655,10 +789,38 @@
       <p>La Comisión Electoral elabora y publica el padrón electoral; verifica la condición de socio activo y el cumplimiento de obligaciones pecuniarias; revisa y valida las candidaturas presentadas; supervisa el proceso electoral; realiza el escrutinio y proclama oficialmente los resultados. Toda situación no prevista en la convocatoria será resuelta por la Comisión Electoral conforme a los Estatutos de ACHETSU.</p>
     </section>
 
+    <section class="section wrap" id="padron" aria-labelledby="directory-title">
+      <div class="section-heading">
+        <h2 id="directory-title">Consulta el padrón de socios</h2>
+        <p>Buscador autocontenido: funciona sin salir de este sitio. Busca por nombre o apellidos para socios/as naturales, y por universidad para representantes institucionales.</p>
+      </div>
+      <div class="directory-grid">
+        <article class="member-viewer" data-member-category="naturales">
+          <h3>Socios y socias naturales</h3>
+          <p>Académicas, académicos e investigadores asociados a una unidad académica universitaria de Trabajo Social.</p>
+          <label class="member-search-label" for="search-naturales">Nombre o apellidos</label>
+          <input class="member-search" id="search-naturales" type="search" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-controls="suggestions-naturales" aria-expanded="false" placeholder="Empieza a escribir un nombre">
+          <div class="member-suggestions" id="suggestions-naturales" role="listbox" aria-label="Coincidencias de socios naturales" hidden></div>
+          <p class="member-search-status" id="status-naturales" role="status" aria-live="polite">Escribe al menos dos letras para buscar.</p>
+          <article class="member-result" id="result-naturales" aria-live="polite" hidden></article>
+        </article>
+        <article class="member-viewer" data-member-category="institucionales">
+          <h3>Representantes institucionales</h3>
+          <p>Busca por universidad o institución asociada; el representante puede cambiar con más frecuencia que la institución.</p>
+          <label class="member-search-label" for="search-institucionales">Universidad o institución</label>
+          <input class="member-search" id="search-institucionales" type="search" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-controls="suggestions-institucionales" aria-expanded="false" placeholder="Empieza a escribir el nombre de la universidad">
+          <div class="member-suggestions" id="suggestions-institucionales" role="listbox" aria-label="Coincidencias de universidades socias" hidden></div>
+          <p class="member-search-status" id="status-institucionales" role="status" aria-live="polite">Escribe al menos dos letras del nombre de la universidad.</p>
+          <article class="member-result" id="result-institucionales" aria-live="polite" hidden></article>
+        </article>
+      </div>
+      <p class="directory-notice"><strong>Cómo leer el estado:</strong> "Habilitado/a" corresponde a una X en la columna 2026 del registro recibido. Sin esa marca, el registro aparece como no habilitado y requiere regularización para votar o postular. El padrón público se actualiza únicamente después de la aprobación administrativa; esta página sincroniza una copia del registro oficial en cada publicación. Los cambios enviados quedan pendientes de revisión.</p>
+    </section>
+
     <section class="section wrap" id="etapas" aria-labelledby="stages-title">
       <div class="section-heading">
         <h2 id="stages-title">Qué puedes hacer ahora</h2>
-        <p>Estas acciones ayudan a preparar la participación. La consulta del padrón y las solicitudes de rectificación están disponibles en el sitio institucional.</p>
+        <p>Estas acciones ayudan a preparar la participación. La consulta del padrón y las solicitudes de rectificación están disponibles directamente en esta página.</p>
       </div>
       <div class="process-list">
         <article class="process-step" id="regularizacion">
@@ -674,13 +836,13 @@
             <a class="step-link" href="https://achetsu.cl/#socios">Información de membresía en el sitio institucional ↗</a>
           </div>
         </article>
-        <article class="process-step" id="padron">
+        <article class="process-step" id="registro">
           <span class="step-index" aria-hidden="true">02</span>
           <h3>Consultar y actualizar el registro</h3>
           <div class="step-copy">
             <p>Revisa tu nombre, correo, universidad y estado de habilitación. El buscador distingue socios/as naturales y representantes institucionales; para estos últimos, permite buscar por universidad.</p>
             <p>Si necesitas corregir datos o informar antecedentes, envía una solicitud de rectificación. Los cambios quedan pendientes hasta la revisión y aprobación administrativa.</p>
-            <a class="step-link" href="https://achetsu.cl/#padron">Abrir consulta del padrón y solicitar rectificación ↗</a>
+            <a class="step-link" href="#padron">Abrir consulta del padrón y solicitar rectificación ↓</a>
           </div>
         </article>
         <article class="process-step" id="presentar-candidatura">
@@ -741,5 +903,203 @@
       <a href="https://achetsu.cl/">Volver al sitio institucional ↗</a>
     </div>
   </footer>
+
+  <script src="assets/apps-script-config.js"></script>
+  <script>
+    (() => {
+      const searchConfigs = [
+        { category: "naturales", inputId: "search-naturales", suggestionsId: "suggestions-naturales", statusId: "status-naturales", resultId: "result-naturales" },
+        { category: "institucionales", inputId: "search-institucionales", suggestionsId: "suggestions-institucionales", statusId: "status-institucionales", resultId: "result-institucionales" }
+      ];
+
+      // Esta página no abre un iframe hacia Apps Script: la consulta es 100% autocontenida
+      // a partir de una copia local del padrón (assets/padron-socios.json). El backend solo
+      // se usa, si está configurado, para construir el enlace de solicitud de rectificación.
+      const backendUrl = String(window.ACHETSU_APPS_SCRIPT_URL || "").trim();
+      let publicBackend = null;
+      try {
+        const parsedBackendUrl = new URL(backendUrl);
+        if (parsedBackendUrl.protocol === "https:" &&
+            parsedBackendUrl.hostname === "script.google.com" &&
+            /^\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(parsedBackendUrl.pathname)) {
+          publicBackend = parsedBackendUrl;
+        }
+      } catch (error) {
+        if (backendUrl) console.error("La URL del backend ACHETSU no es válida.", error);
+      }
+
+      const normalize = (value) => value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase("es")
+        .trim();
+
+      const setStatus = (element, message, state = "") => {
+        element.textContent = message;
+        if (state) element.dataset.state = state;
+        else delete element.dataset.state;
+      };
+
+      const renderRecord = (record, result) => {
+        result.replaceChildren();
+        result.hidden = false;
+
+        const isInstitutional = record.category === "institucionales";
+        const heading = document.createElement("h4");
+        heading.textContent = isInstitutional
+          ? (record.university || "Universidad no informada")
+          : `${record.surname}, ${record.givenName}`;
+        result.append(heading);
+
+        if (!isInstitutional) {
+          const university = document.createElement("p");
+          university.className = "member-result-university";
+          university.textContent = record.university || "Universidad no informada";
+          result.append(university);
+        }
+
+        const details = document.createElement("dl");
+        const fields = isInstitutional
+          ? [["Representante", `${record.surname}, ${record.givenName}`], ["Correo", record.email || "No informado"]]
+          : [["Correo", record.email || "No informado"], ["Universidad", record.university || "No informada"]];
+        fields.forEach(([label, value]) => {
+          const term = document.createElement("dt");
+          term.textContent = label;
+          const description = document.createElement("dd");
+          description.textContent = value;
+          details.append(term, description);
+        });
+        result.append(details);
+
+        const status = document.createElement("strong");
+        status.className = `member-status${record.eligible2026 ? " is-eligible" : ""}`;
+        status.textContent = record.eligible2026
+          ? "Socio/a activo/a · Habilitado/a para votar y postular"
+          : "No habilitado/a para votar ni postular · Regularización pendiente";
+        result.append(status);
+
+        const explanation = document.createElement("p");
+        explanation.className = "member-result-note";
+        explanation.textContent = record.eligible2026
+          ? "El registro tiene una X en la columna 2026."
+          : "El registro no tiene una X en la columna 2026; confirma tu situación y regulariza la membresía.";
+        result.append(explanation);
+
+        if (publicBackend && record.id) {
+          const rectifyUrl = new URL(publicBackend);
+          rectifyUrl.searchParams.set("view", "intake");
+          rectifyUrl.searchParams.set("requestType", "rectificacion");
+          rectifyUrl.searchParams.set("category", record.category);
+          rectifyUrl.searchParams.set("memberId", record.id);
+          const rectify = document.createElement("a");
+          rectify.className = "document-link";
+          rectify.href = rectifyUrl.toString();
+          rectify.target = "_blank";
+          rectify.rel = "noopener";
+          rectify.textContent = "Solicitar rectificación de este registro ↗";
+          result.append(rectify);
+        }
+      };
+
+      const setupViewer = (config, records) => {
+        const input = document.getElementById(config.inputId);
+        const suggestions = document.getElementById(config.suggestionsId);
+        const status = document.getElementById(config.statusId);
+        const result = document.getElementById(config.resultId);
+        const members = records.filter((record) => record.category === config.category);
+
+        const closeSuggestions = () => {
+          suggestions.hidden = true;
+          input.setAttribute("aria-expanded", "false");
+          suggestions.replaceChildren();
+        };
+
+        const selectRecord = (record) => {
+          closeSuggestions();
+          setStatus(status, "Registro encontrado.");
+          renderRecord(record, result);
+        };
+
+        input.addEventListener("input", () => {
+          const query = normalize(input.value);
+          result.hidden = true;
+          result.replaceChildren();
+          closeSuggestions();
+
+          if (query.length < 2) {
+            setStatus(status, config.category === "institucionales"
+              ? "Escribe al menos dos letras del nombre de la universidad."
+              : "Escribe al menos dos letras para buscar.");
+            return;
+          }
+
+          const isInstitutional = config.category === "institucionales";
+          const matches = members.filter((member) => isInstitutional
+            ? normalize(member.university || "").includes(query)
+            : normalize(`${member.surname} ${member.givenName}`).includes(query));
+          if (!matches.length) {
+            setStatus(status, isInstitutional
+              ? "No encontramos universidades con ese nombre. Revisa la escritura."
+              : "No encontramos coincidencias. Revisa la escritura o prueba con otro apellido.");
+            return;
+          }
+
+          const visibleMatches = matches.slice(0, 8);
+          visibleMatches.forEach((member) => {
+            const option = document.createElement("button");
+            option.type = "button";
+            option.className = "suggestion-option";
+            option.setAttribute("role", "option");
+
+            const name = document.createElement("strong");
+            const school = document.createElement("span");
+            if (isInstitutional) {
+              name.textContent = member.university || "Universidad no informada";
+              school.textContent = `${member.surname}, ${member.givenName}`;
+            } else {
+              name.textContent = `${member.surname}, ${member.givenName}`;
+              school.textContent = member.university || "Universidad no informada";
+            }
+            option.append(name, school);
+            option.addEventListener("click", () => selectRecord(member));
+            suggestions.append(option);
+          });
+
+          suggestions.hidden = false;
+          input.setAttribute("aria-expanded", "true");
+          setStatus(status, matches.length > 8
+            ? `Hay ${matches.length} coincidencias; se muestran las primeras 8. Sigue escribiendo para afinar la búsqueda.`
+            : `${matches.length} ${matches.length === 1 ? "coincidencia" : "coincidencias"}. Selecciona ${isInstitutional ? "una universidad" : "un nombre"} para ver el registro.`);
+        });
+
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeSuggestions();
+            return;
+          }
+          if (event.key === "ArrowDown" && !suggestions.hidden) {
+            event.preventDefault();
+            suggestions.querySelector("button")?.focus();
+          }
+        });
+      };
+
+      fetch("assets/padron-socios.json")
+        .then((response) => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.json();
+        })
+        .then((records) => searchConfigs.forEach((config) => setupViewer(config, records)))
+        .catch((error) => {
+          console.error("No se pudo cargar el padrón público.", error);
+          searchConfigs.forEach((config) => {
+            const input = document.getElementById(config.inputId);
+            const status = document.getElementById(config.statusId);
+            input.disabled = true;
+            setStatus(status, "No se pudo cargar el padrón. Recarga la página para volver a intentarlo.", "error");
+          });
+        });
+    })();
+  </script>
 </body>
 </html>
