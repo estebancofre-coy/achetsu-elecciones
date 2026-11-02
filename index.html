@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#302d2b">
+  <meta name="description" content="Información oficial de ACHETSU para preparar el proceso de elección de su Directiva: padrón, membresías y convocatoria.">
+  <title>Elecciones ACHETSU | Información del proceso</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f3e8;
+      --paper-deep: #eee5d3;
+      --ink: #302d2b;
+      --muted: #625a52;
+      --rust: #b94f2d;
+      --gold: #d7a93f;
+      --teal: #1c625e;
+      --teal-dark: #174e4b;
+      --line: #cfc3ae;
+      --white: #fffdf8;
+      --page: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 "Segoe UI", Arial, sans-serif;
+    }
+
+    a { color: var(--teal-dark); text-underline-offset: 0.2em; }
+    a:hover { color: var(--rust); }
+    a:focus-visible { outline: 3px solid var(--rust); outline-offset: 4px; }
+    p { max-width: 70ch; }
+
+    .skip-link {
+      position: absolute;
+      z-index: 20;
+      top: 0.5rem;
+      left: 0.5rem;
+      padding: 0.6rem 1rem;
+      transform: translateY(-150%);
+      background: var(--ink);
+      color: var(--white);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid var(--line);
+      background: rgb(247 243 232 / 97%);
+    }
+
+    .header-inner,
+    .wrap {
+      width: min(100% - 3rem, var(--page));
+      margin-inline: auto;
+    }
+
+    .header-inner {
+      display: flex;
+      min-height: 78px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 42px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .brand-name {
+      display: grid;
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.11em;
+      line-height: 1.2;
+    }
+    .brand-name span:last-child {
+      margin-top: 0.2rem;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.3rem;
+    }
+    .nav-links a {
+      color: var(--ink);
+      font-size: 0.78rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--rust); }
+    .nav-links .nav-main { color: var(--teal-dark); }
+
+    main { overflow: clip; }
+
+    .hero {
+      position: relative;
+      padding-block: clamp(3.5rem, 8vw, 7rem);
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .hero::after {
+      position: absolute;
+      right: max(1.5rem, calc((100vw - var(--page)) / 2));
+      bottom: 0;
+      width: min(27vw, 360px);
+      height: 7px;
+      background: var(--gold);
+      content: "";
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      align-items: center;
+      gap: clamp(2.5rem, 7vw, 7rem);
+    }
+    .hero h1 {
+      max-width: 12ch;
+      margin: 0;
+      font: 400 clamp(3.2rem, 7.5vw, 6.4rem)/0.98 Georgia, "Times New Roman", serif;
+      letter-spacing: -0.045em;
+    }
+    .hero h1 em {
+      color: #efc95e;
+      font-style: normal;
+    }
+    .hero-copy > p {
+      max-width: 62ch;
+      margin: 1.5rem 0 0;
+      color: #f0e9dc;
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      padding: 0.75rem 1rem;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 850;
+      text-decoration: none;
+      transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+    .button:hover { transform: translateY(-2px); background: #f1cf6e; color: var(--ink); }
+    .button-secondary {
+      border-color: #b6c8c0;
+      background: transparent;
+      color: var(--paper);
+    }
+    .button-secondary:hover { background: var(--paper); color: var(--ink); }
+
+    .status-board {
+      position: relative;
+      padding: clamp(1.4rem, 3vw, 2.2rem);
+      border: 1px solid #827a6e;
+      background: #3c3835;
+    }
+    .status-board::before {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 58px;
+      height: 6px;
+      background: var(--rust);
+      content: "";
+    }
+    .status-label {
+      margin: 0;
+      color: #f1cf6e;
+      font-size: 0.73rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .status-board h2 {
+      margin: 0.7rem 0;
+      font: 400 clamp(1.6rem, 3vw, 2.2rem)/1.08 Georgia, "Times New Roman", serif;
+    }
+    .status-board p {
+      margin: 0;
+      color: #f0e9dc;
+      font-size: 0.9rem;
+    }
+    .status-board .status-rule {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #827a6e;
+      color: #f1cf6e;
+      font-size: 0.78rem;
+      font-weight: 750;
+    }
+
+    .section { padding-block: clamp(3.5rem, 7vw, 6rem); }
+    .section + .section { border-top: 1px solid var(--line); }
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.7fr);
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+    .section-heading h2 {
+      max-width: 16ch;
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .process-list { border-top: 1px solid var(--ink); }
+    .process-step {
+      display: grid;
+      grid-template-columns: 90px minmax(200px, 0.72fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      align-items: start;
+      padding-block: 1.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .step-index {
+      color: var(--rust);
+      font: 400 2.2rem/1 Georgia, "Times New Roman", serif;
+    }
+    .process-step h3 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      line-height: 1.15;
+    }
+    .step-copy p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .step-copy p + p { margin-top: 0.7rem; }
+    .step-copy strong { color: var(--ink); }
+    .step-link { display: inline-block; margin-top: 0.8rem; font-size: 0.84rem; font-weight: 800; }
+
+    .dues {
+      display: grid;
+      max-width: 600px;
+      margin: 1rem 0;
+      grid-template-columns: 1fr auto;
+      border-top: 1px solid var(--line);
+    }
+    .dues dt, .dues dd { margin: 0; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+    .dues dt { color: var(--muted); font-size: 0.86rem; }
+    .dues dd { color: var(--teal-dark); font-weight: 850; }
+    .notice-inline {
+      display: inline-block;
+      margin-top: 0.35rem;
+      color: #843c24;
+      font-size: 0.82rem;
+      font-weight: 750;
+    }
+
+    .membership-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+    .membership-block { padding-top: 1rem; border-top: 3px solid var(--teal); }
+    .membership-block:nth-child(2) { border-color: var(--rust); }
+    .membership-block h3 { margin: 0 0 0.8rem; font-size: 1.8rem; }
+    .membership-block p { margin: 0 0 0.9rem; color: var(--muted); }
+    .resource-links { display: grid; gap: 0.7rem; margin-top: 1.25rem; }
+    .resource-links a { font-size: 0.86rem; font-weight: 750; }
+    .forms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.3rem;
+    }
+    .button-light {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: var(--white);
+    }
+    .button-light:hover { background: var(--teal-dark); color: var(--white); }
+    .button-outline {
+      border-color: var(--teal);
+      background: transparent;
+      color: var(--teal-dark);
+    }
+    .button-outline:hover { background: var(--teal); color: var(--white); }
+
+    .official-call {
+      display: grid;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 2rem;
+      background: var(--paper-deep);
+      border: 1px solid var(--gold);
+    }
+    .official-call h2 { max-width: 17ch; margin: 0; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; }
+    .official-call p { max-width: 65ch; margin: 0.8rem 0 0; color: var(--muted); }
+    .official-call .button { white-space: nowrap; }
+
+    .site-footer { padding-block: 2rem; background: var(--ink); color: var(--paper); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .footer-inner p { margin: 0; color: #f0e9dc; font-size: 0.78rem; }
+    .footer-inner a { color: #f1cf6e; font-size: 0.82rem; font-weight: 750; }
+
+    @media (max-width: 760px) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+      .hero-copy { min-width: 0; }
+      .hero h1 { max-width: 13ch; }
+      .section-heading { grid-template-columns: minmax(0, 1fr); gap: 0.9rem; }
+      .process-step { grid-template-columns: 52px minmax(0, 1fr); gap: 0.8rem 1rem; }
+      .step-index { grid-row: span 2; }
+      .step-copy { grid-column: 2; }
+      .official-call { grid-template-columns: 1fr; }
+      .official-call .button { justify-self: start; white-space: normal; }
+    }
+
+    @media (max-width: 560px) {
+      html { scroll-padding-top: 5rem; }
+      .header-inner, .wrap { width: min(100% - 2rem, var(--page)); }
+      .header-inner { min-height: 68px; padding-block: 0.65rem; flex-wrap: wrap; }
+      .brand img { width: 44px; height: 36px; }
+      .brand-name { font-size: 0.7rem; }
+      .brand-name span:last-child { font-size: 0.56rem; }
+      .nav-links { width: 100%; justify-content: space-between; gap: 0.7rem; }
+      .nav-links a { font-size: 0.72rem; }
+      .nav-links a:nth-child(2) { display: none; }
+      .hero { padding-block: 3.5rem 3rem; }
+      .hero h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .membership-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 360px) {
+      .hero h1 { font-size: clamp(2.35rem, 12vw, 3rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+  THESIS: Una elección legítima comienza con un registro revisado; esta página reemplaza la portada institucional genérica por el estado y las acciones electorales.
+  OWN-WORLD: Marfil, carbón, terracota, oro y verde petróleo; tipografía editorial legible y líneas de acta que organizan la información.
+  STORY: La persona entiende que la convocatoria aún no tiene fecha oficial, revisa su situación y prepara su participación.
+  FIRST VIEWPORT: Mensaje principal y consulta del padrón a la izquierda; tablero de estado de convocatoria a la derecha, con acciones visibles.
+  FORM: Portal electoral independiente, organizado como secuencia de etapas y tablero oficial; identidad ACHETSU existente, sin calendario inventado.
+  -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="Portal electoral ACHETSU, inicio">
+        <img src="assets/achet-su-logo.png" alt="">
+        <span class="brand-name">ACHETSU<span>PROCESO ELECTORAL</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#etapas">Etapas</a>
+        <a href="#incorporacion">Incorporación</a>
+        <a class="nav-main" href="https://achetsu.cl/">Sitio institucional ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="page-title">
+      <div class="hero-grid wrap">
+        <div class="hero-copy">
+          <h1 id="page-title">Una elección informada comienza con un <em>registro al día.</em></h1>
+          <p>Consulta las acciones para preparar la elección de la Directiva de ACHETSU. Antes de convocar a la Asamblea General Ordinaria, se requiere avanzar en la actualización del registro y la revisión de membresías.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://achetsu.cl/#padron">Consultar padrón y actualizar datos ↗</a>
+            <a class="button button-secondary" href="#etapas">Ver etapas del proceso ↓</a>
+          </div>
+        </div>
+        <aside class="status-board" aria-labelledby="status-title">
+          <p class="status-label">Información oficial</p>
+          <h2 id="status-title">Convocatoria y fechas por informar</h2>
+          <p>La Asamblea y la elección serán anunciadas oportunamente, una vez avanzado el proceso de actualización y regularización de membresías.</p>
+          <p class="status-rule">Fechas, padrón electoral y requisitos específicos se comunicarán junto con la convocatoria oficial.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section wrap" id="etapas" aria-labelledby="stages-title">
+      <div class="section-heading">
+        <h2 id="stages-title">Qué puedes hacer ahora</h2>
+        <p>Estas acciones ayudan a preparar la participación. La consulta del padrón y las solicitudes de rectificación están disponibles en el sitio institucional.</p>
+      </div>
+      <div class="process-list">
+        <article class="process-step" id="regularizacion">
+          <span class="step-index" aria-hidden="true">01</span>
+          <h3>Revisar y regularizar membresías</h3>
+          <div class="step-copy">
+            <p>Según el artículo 44 de los Estatutos, las cuotas ordinarias anuales son:</p>
+            <dl class="dues">
+              <dt>Socios/as institucionales</dt><dd>3 UF</dd>
+              <dt>Socios/as naturales</dt><dd>1 UF</dd>
+            </dl>
+            <p><strong>Las instrucciones y el canal de pago aún no están publicados.</strong> Esta página se actualizará cuando ACHETSU informe cómo regularizar.</p>
+            <a class="step-link" href="https://achetsu.cl/#socios">Información de membresía en el sitio institucional ↗</a>
+          </div>
+        </article>
+        <article class="process-step" id="padron">
+          <span class="step-index" aria-hidden="true">02</span>
+          <h3>Consultar y actualizar el registro</h3>
+          <div class="step-copy">
+            <p>Revisa tu nombre, correo, universidad y estado de habilitación. El buscador distingue socios/as naturales y representantes institucionales; para estos últimos, permite buscar por universidad.</p>
+            <p>Si necesitas corregir datos o informar antecedentes, envía una solicitud de rectificación. Los cambios quedan pendientes hasta la revisión y aprobación administrativa.</p>
+            <a class="step-link" href="https://achetsu.cl/#padron">Abrir consulta del padrón y solicitar rectificación ↗</a>
+          </div>
+        </article>
+        <article class="process-step" id="convocatoria">
+          <span class="step-index" aria-hidden="true">03</span>
+          <h3>Esperar la convocatoria oficial</h3>
+          <div class="step-copy">
+            <p>La convocatoria a Asamblea General Ordinaria comunicará las fechas, el padrón electoral y los requisitos específicos. No hay fechas oficiales publicadas en esta página por ahora.</p>
+            <p>Cuando exista una comunicación oficial, aquí se incorporarán sus documentos y las instrucciones correspondientes.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="incorporacion" aria-labelledby="membership-title">
+      <div class="section-heading">
+        <h2 id="membership-title">¿Aún no formas parte?</h2>
+        <p>Las solicitudes de incorporación se reciben en los formularios existentes. La elegibilidad electoral se determinará según los Estatutos y la convocatoria oficial.</p>
+      </div>
+      <div class="membership-grid">
+        <article class="membership-block">
+          <h3>Unidades académicas</h3>
+          <p>Escuelas, Departamentos y Carreras universitarias de Trabajo Social pueden solicitar su incorporación como socias institucionales, sujetas a los requisitos estatutarios.</p>
+          <div class="resource-links">
+            <a href="https://docs.google.com/document/d/1My86G708OjkKw39QU17iicEzUsPVb8ub/edit?usp=drive_link&amp;ouid=111476085131633763376&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Formato de constancia institucional ↗</a>
+          </div>
+          <div class="forms">
+            <a class="button button-light" href="https://goo.gl/forms/jxwuM2HJWoGAmV332" target="_blank" rel="noopener">Solicitud institucional ↗</a>
+          </div>
+        </article>
+        <article class="membership-block">
+          <h3>Personas</h3>
+          <p>Académicas, académicos e investigadores vinculados a unidades académicas universitarias de Trabajo Social pueden solicitar su incorporación como socios/as naturales.</p>
+          <div class="resource-links">
+            <a href="https://docs.google.com/spreadsheets/d/1mOCSw-D90ekZnFeMfOCcNc-kBje49ZEW/edit?usp=sharing&amp;ouid=111476085131633763376&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Formato de constancia personal ↗</a>
+          </div>
+          <div class="forms">
+            <a class="button button-outline" href="https://goo.gl/forms/Co3HlLmV6kSUEzwY2" target="_blank" rel="noopener">Solicitud personal ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="official-title">
+      <div class="official-call">
+        <div>
+          <h2 id="official-title">La información de la elección se publicará aquí.</h2>
+          <p>La convocatoria oficial será la referencia para conocer fechas, padrón electoral y requisitos específicos. Mientras tanto, puedes revisar y actualizar tus datos en la consulta del padrón.</p>
+        </div>
+        <a class="button" href="https://achetsu.cl/#padron">Consultar el padrón ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner wrap">
+      <p>ACHETSU · Asociación Chilena de Enseñanza del Trabajo Social Universitario</p>
+      <a href="https://achetsu.cl/">Volver al sitio institucional ↗</a>
+    </div>
+  </footer>
+</body>
+</html>
