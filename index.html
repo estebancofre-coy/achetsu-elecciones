@@ -148,6 +148,32 @@
     }
     .section-index a:hover { text-decoration-color: var(--rust); }
 
+    .support-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(240px, 0.7fr);
+      align-items: center;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+    }
+    .support-layout h3 {
+      margin: 0 0 0.7rem;
+      font-size: 1.55rem;
+    }
+    .support-layout p { color: var(--muted); font-size: 0.9rem; }
+    .support-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      background: var(--ink);
+    }
+    .support-caption { margin: 0.7rem 0 0; font-size: 0.8rem !important; }
+    .support-manual {
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--line);
+    }
+    .support-manual .button { margin: 0.3rem 0 0.8rem; }
+    .support-download { display: block; font-size: 0.84rem; font-weight: 750; }
+
     main { overflow: clip; }
 
     .hero {
@@ -483,6 +509,7 @@
       .calendar-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .section-index { grid-template-columns: 1fr; gap: 0.5rem; }
       .section-index ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .support-layout { grid-template-columns: 1fr; gap: 1.5rem; }
     }
 
     @media (max-width: 760px) {
@@ -708,6 +735,7 @@
       <h2 id="section-index-title">En esta página</h2>
       <ul>
         <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#material-apoyo">Video y manual</a></li>
         <li><a href="#convocatoria">Declaración institucional</a></li>
         <li><a href="#estructura-directorio">Estructura del Directorio</a></li>
         <li><a href="#candidaturas">Presentación de candidaturas</a></li>
@@ -719,6 +747,29 @@
         <li><a href="#documentos-oficiales">Documentos oficiales</a></li>
       </ul>
     </nav>
+
+    <section class="section wrap" id="material-apoyo" aria-labelledby="material-apoyo-title">
+      <div class="section-heading">
+        <h2 id="material-apoyo-title">Material de apoyo</h2>
+        <p>Revisa el tutorial en video o consulta el manual paso a paso para participar en las elecciones ACHETSU 2026–2029.</p>
+      </div>
+      <div class="support-layout">
+        <div>
+          <h3>Video tutorial</h3>
+          <video class="support-video" controls preload="none" playsinline aria-describedby="tutorial-video-summary">
+            <source src="assets/video-elecciones-achetsu-2026.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video. <a href="assets/video-elecciones-achetsu-2026.mp4">Abrir el archivo MP4</a>.
+          </video>
+          <p class="support-caption" id="tutorial-video-summary">Tutorial paso a paso para consultar el padrón, regularizar la membresía y participar como elector/a o integrante de una lista candidata.</p>
+        </div>
+        <aside class="support-manual" aria-labelledby="manual-title">
+          <h3 id="manual-title">Manual de participación</h3>
+          <p>La guía resume los pasos, plazos y documentos del proceso electoral.</p>
+          <a class="button button-light" href="assets/documentos/manual-tutorial-elecciones-achetsu-2026.pdf" target="_blank" rel="noopener">Abrir manual (PDF) ↗</a>
+          <a class="support-download" href="assets/documentos/manual-tutorial-elecciones-achetsu-2026.pdf" download>Descargar manual (PDF) ↓</a>
+        </aside>
+      </div>
+    </section>
 
     <section class="section wrap" id="convocatoria" aria-labelledby="convocatoria-title">
       <div class="section-heading">
@@ -872,7 +923,7 @@
         <p>Estas acciones ayudan a preparar la participación. La consulta del padrón y las solicitudes de rectificación están disponibles directamente en esta página.</p>
       </div>
       <div class="process-list">
-        <article class="process-step" id="regularizacion">
+        <article class="process-step" id="cuotas">
           <span class="step-index" aria-hidden="true">01</span>
           <h3>Revisar y regularizar membresías</h3>
           <div class="step-copy">

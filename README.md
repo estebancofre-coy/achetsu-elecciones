@@ -22,3 +22,7 @@ El registro debe guardarse antes de que GitHub pueda validar el dominio y emitir
 - No publicar instrucciones de pago hasta recibirlas de ACHETSU.
 - Los enlaces de padrón y membresía llevan al sitio institucional.
 - No copiar el padrón de personas ni otros datos personales a este repositorio.
+- El tutorial de elecciones se sirve desde `assets/video-elecciones-achetsu-2026.mp4`
+  y su guía PDF desde `assets/documentos/manual-tutorial-elecciones-achetsu-2026.pdf`.
+  Ambos aparecen en la sección “Material de apoyo”; el video no se descarga hasta
+  que la persona decide reproducirlo.
